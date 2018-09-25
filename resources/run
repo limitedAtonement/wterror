@@ -1,0 +1,11 @@
+#!/bin/bash
+export LD_LIBRARY_PATH=/usr/local/lib
+# Docroot is set to '.' and after ;, each of the folders with static
+#  content are listed (comma-separated). If this comma-separated list
+#  isn't present, internal paths get nasty.
+#
+# To deploy an app at /app, and serve static resources at /app/css/styles.css and /app/js/myflie.js, use
+# Do not call your executable "app"!! We'll use "ap"
+# ./ap --deploy-path=/app/ --docroot '.;/app/css/,/app/js/'
+cgdb --args \
+./meals --docroot '.;thereshouldbe/no/such/folder' --http-address 0.0.0.0 --http-port 9090
